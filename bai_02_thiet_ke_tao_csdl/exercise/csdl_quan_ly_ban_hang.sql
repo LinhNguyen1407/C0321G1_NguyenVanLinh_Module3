@@ -10,8 +10,8 @@ create table customer(
 
 create table orders(
 	order_id int primary key auto_increment,
-    order_date datetime not null,
-    order_total_price int not null
+    order_date date not null,
+    order_total_price int
 );
 
 create table product(
@@ -23,7 +23,7 @@ create table product(
 create table order_detail(
 	order_id int not null,
     product_id int not null,
-    order_quanlity varchar(255),
+    order_quanlity int not null,
 	primary key(order_id, product_id),
     foreign key (order_id) references orders(order_id),
     foreign key (product_id) references product(product_id)
@@ -39,4 +39,3 @@ select * from customer;
 select * from orders;
 select * from product;
 select * from order_detail;
-

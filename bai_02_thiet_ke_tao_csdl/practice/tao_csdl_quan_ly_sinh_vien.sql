@@ -1,6 +1,6 @@
-create database quan_ly_sinh_vien_1;
+create database quan_ly_sinh_vien;
 
-use quan_ly_sinh_vien_1;
+use quan_ly_sinh_vien;
 
 create table class(
 	class_id int not null auto_increment primary key,
@@ -28,8 +28,8 @@ create table subject(
 
 create table mark(
 	mark_id int not null auto_increment primary key,
-    sub_id int not null unique key,
-    student_id int not null unique key,
+    sub_id int not null,
+    student_id int not null,
     mark float default 0 check(mark between 0 and 100),
     exam_times tinyint default 1,
     foreign key(sub_id) references subject(sub_id),
