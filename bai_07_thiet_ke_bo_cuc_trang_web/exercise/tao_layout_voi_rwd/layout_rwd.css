@@ -1,0 +1,99 @@
+body {
+    padding: 0;
+    margin: 0;
+}
+
+.container > div {
+    font-size: 20px;
+    padding: 10px;
+}
+
+.container {
+    display: grid;
+    grid-template-areas:
+        'header header header header header header'
+        'menuLeft content content content content menuRight'
+        'footer footer footer footer footer footer';
+}
+
+@media only screen and (max-width: 650px) {
+    .container {
+        display: grid;
+        grid-template-areas:
+                'header header header header header header'
+                'menuLeft content content content content menuRight'
+                'footer footer footer footer footer footer';
+    }
+
+    .item1, .item4 {
+        display: none;
+    }
+}
+
+.item1 {
+    height: 100px;
+    background-color: dimgray;
+}
+
+.item2 {
+    height: 400px;
+    background-color: darkgray;
+}
+
+.item3 {
+    height: 400px;
+}
+
+.item4 {
+    height: 400px;
+    background-color: darkgray;
+}
+
+.item5 {
+    height: 45px;
+    background-color: dimgray;
+    text-align: center;
+}
+
+
+.item1 ul li {
+    margin: 10px;
+    padding: 10px;
+    list-style-type: none;
+    float: left;
+    background-color: cadetblue;
+}
+.item1 #login {
+    float: right;
+}
+
+.item1 li:hover {
+    background-color: brown;
+}
+
+.item2 ul li {
+    margin: 5px;
+    padding: 5px;
+    list-style-type: none;
+}
+
+a {
+    width: 20px;
+    text-decoration: none;
+}
+
+.item4 .ads {
+    border: 1px solid;
+    padding: 10px;
+    margin-right: 5px;
+    text-align: center;
+    height: 40px;
+    width: 100px;
+}
+
+
+.item1 {grid-area: header}
+.item2 {grid-area: menuLeft}
+.item3 {grid-area: content}
+.item4 {grid-area: menuRight}
+.item5 {grid-area: footer}
