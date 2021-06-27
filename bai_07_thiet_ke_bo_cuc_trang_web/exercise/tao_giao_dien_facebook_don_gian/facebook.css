@@ -11,28 +11,31 @@ body {
     padding-top: 20px;
     border: 1px solid;
     margin: 5px;
+    width: 100%;
+    position: fixed;
+    top: 0;
 }
 
 .content {
     background-color: aqua;
-    height: 280px;
+    height: 350px;
     text-align: center;
     font-size: 50px;
     padding: 50px;
     border: 1px solid;
-    margin: 5px;
+    margin: 135px 5px 5px 5px ;
     width: 55%;
     float: left;
 }
 .sidebar {
     background-color: cadetblue;
-    height: 280px;
+    height: 350px;
     text-align: center;
     font-size: 50px;
     padding: 50px;
     border: 1px solid;
-    margin: 5px;
-    width: 9%;
+    margin: 135px 5px 5px 5px ;
+    width: 10.5%;
     float: left;
 }
 

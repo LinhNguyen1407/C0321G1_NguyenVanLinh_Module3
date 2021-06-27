@@ -10,13 +10,14 @@ body {
 
 .container {
     display: grid;
+    grid-template-columns: 16% 16% 16% 16% 16% 16%;
     grid-template-areas:
         'header header header header header header'
         'menuLeft content content content content menuRight'
         'footer footer footer footer footer footer';
 }
 
-@media only screen and (max-width: 650px) {
+@media only screen and (max-width: 576px) {
     .container {
         display: grid;
         grid-template-areas:
@@ -25,7 +26,7 @@ body {
                 'footer footer footer footer footer footer';
     }
 
-    .item1, .item4 {
+    .item2, .item4 {
         display: none;
     }
 }
