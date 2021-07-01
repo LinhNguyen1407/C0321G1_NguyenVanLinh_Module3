@@ -19,6 +19,7 @@ public class UserRepositoryImpl implements UserRepository {
     private static final String UPDATE_USERS_SQL = "update users set name = ?,email= ?, country =? where id = ?;";
 
     private static final String SELECT_USER_BY_COUNTRY = "select id,name,email,country from users where country =?";
+    private static final String SELECT_ALL_USERS_ORDER_BY = "select * from users order by name";
 
     public void insertUser(User user) {
         Connection connection = DBConnection.getConnection();
@@ -106,6 +107,35 @@ public class UserRepositoryImpl implements UserRepository {
         ResultSet resultSet = null;
         try {
             preparedStatement = connection.prepareStatement(SELECT_ALL_USERS);
+            resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                int id = resultSet.getInt("id");
+                String name = resultSet.getString("name");
+                String email = resultSet.getString("email");
+                String country = resultSet.getString("country");
+                users.add(new User(id, name, email, country));
+            }
+        } catch (SQLException e) {
+            printSQLException(e);
+        } finally {
+            try {
+                resultSet.close();
+                preparedStatement.close();
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            }
+            DBConnection.close();
+        }
+        return users;
+    }
+
+    public List<User> selectAllUsersAfSort() {
+        List<User> users = new ArrayList<>();
+        Connection connection = DBConnection.getConnection();
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+        try {
+            preparedStatement = connection.prepareStatement(SELECT_ALL_USERS_ORDER_BY);
             resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
                 int id = resultSet.getInt("id");

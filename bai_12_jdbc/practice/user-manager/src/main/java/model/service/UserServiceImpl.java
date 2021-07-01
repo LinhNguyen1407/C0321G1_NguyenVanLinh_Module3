@@ -32,6 +32,11 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public List<User> selectAllUsersAfSort() {
+        return repository.selectAllUsersAfSort();
+    }
+
+    @Override
     public void deleteUser(int id) throws SQLException {
         repository.deleteUser(id);
     }

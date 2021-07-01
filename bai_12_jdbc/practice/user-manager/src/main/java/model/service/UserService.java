@@ -15,6 +15,8 @@ public interface UserService {
 
     List<User> selectAllUsers();
 
+    List<User> selectAllUsersAfSort();
+
     void deleteUser(int id) throws SQLException;
 
     void updateUser(User user) throws SQLException;

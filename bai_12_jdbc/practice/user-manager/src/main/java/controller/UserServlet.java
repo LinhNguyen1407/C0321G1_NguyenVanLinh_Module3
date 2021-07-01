@@ -1,6 +1,5 @@
 package controller;
 
-import model.bean.ComparatorUser;
 import model.bean.User;
 import model.service.UserService;
 import model.service.UserServiceImpl;
@@ -13,7 +12,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.Collections;
 import java.util.List;
 
 @WebServlet(name = "UserServlet", urlPatterns = "/users")
@@ -77,8 +75,7 @@ public class UserServlet extends HttpServlet {
     }
 
     private void sortByName(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        List<User> listUser = userService.selectAllUsers();
-        Collections.sort(listUser, new ComparatorUser());
+        List<User> listUser = userService.selectAllUsersAfSort();
         request.setAttribute("listUser", listUser);
         RequestDispatcher dispatcher = request.getRequestDispatcher("user/list-sort.jsp");
         dispatcher.forward(request, response);
@@ -107,8 +104,8 @@ public class UserServlet extends HttpServlet {
     private void showEditForm(HttpServletRequest request, HttpServletResponse response) throws SQLException, ServletException, IOException {
         int id = Integer.parseInt(request.getParameter("id"));
         User existingUser = userService.selectUser(id);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("user/edit.jsp");
         request.setAttribute("user", existingUser);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("user/edit.jsp");
         dispatcher.forward(request, response);
 
     }
